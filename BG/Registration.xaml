@@ -13,18 +13,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BG"
         mc:Ignorable="d"
-        Title="Registration" Height="450" Width="800">
-    <Grid>
-        <Label Content="Логин" HorizontalAlignment="Left" Margin="110,12,0,0" VerticalAlignment="Top" Width="241" Height="66"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" Margin="110,83,0,0" VerticalAlignment="Top" Width="241" Height="66"/>
-        <Label Content="Баланс" HorizontalAlignment="Left" Margin="110,222,0,0" VerticalAlignment="Top" Width="241" Height="67"/>
-        <TextBox HorizontalAlignment="Left" Height="65" Margin="360,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" TextChanged="TextBox_TextChanged"/>
-        <TextBox HorizontalAlignment="Left" Height="66" Margin="360,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
-        <TextBox HorizontalAlignment="Left" Height="66" Margin="360,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="517,324,0,0" VerticalAlignment="Top" Width="163" Height="63"/>
-        <Button Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="110,324,0,0" VerticalAlignment="Top" Width="163" Height="63"/>
-        <Label Content="Имя" HorizontalAlignment="Left" Margin="110,155,0,0" VerticalAlignment="Top" Width="241" Height="67"/>
-        <TextBox HorizontalAlignment="Left" Height="66" Margin="360,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
+        Title="Registration" Height="450" Width="512">
+
+    <Grid Margin="0,0,3.4,0">
+
+        <materialDesign:PackIcon Kind="AccountBox" Height="180" Width="180" Margin="160,6,0,0" />
+
+        <TextBox x:Name="NameTextBox" materialDesign:HintAssist.Hint="Имя" materialDesign:HintAssist.HelperText="Имя пользователя" Margin="64,233,62.2,164">
+            <TextBox.Text>
+                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.HelperText="Минимум 8 символов" Margin="63,284,64.2,112" />
+
+        <TextBox x:Name="BalanceTextBox" materialDesign:HintAssist.Hint="Баланс" materialDesign:HintAssist.HelperText="Сумма в рублях" Margin="64,332,61.2,65">
+            <TextBox.Text>
+                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="LoginTextBox" materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.HelperText="Логин пользователя" Margin="64,188,61.2,209">
+            <TextBox.Text>
+                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Зарегистрироваться" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="160,378,162.2,10" />
+        
+        <!--<Label Content="Логин" HorizontalAlignment="Left" Margin="24,54,0,0" VerticalAlignment="Top" Width="102" Height="28"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="24,125,0,0" VerticalAlignment="Top" Width="102" Height="28"/>
+        <Label Content="Баланс" HorizontalAlignment="Left" Margin="24,266,0,0" VerticalAlignment="Top" Width="102" Height="26"/>
+        <TextBox HorizontalAlignment="Left" Height="65" Margin="130,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
+        <TextBox HorizontalAlignment="Left" Height="66" Margin="130,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
+        <TextBox HorizontalAlignment="Left" Height="66" Margin="130,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="287,328,0,0" VerticalAlignment="Top" Width="163" Height="63"/>
+        <Button Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="24,328,0,0" VerticalAlignment="Top" Width="175" Height="63"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="24,200,0,0" VerticalAlignment="Top" Width="102" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="66" Margin="130,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>-->
 
     </Grid>
 </Window>

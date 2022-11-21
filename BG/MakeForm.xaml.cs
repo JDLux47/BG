@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace BG
 {
     /// <summary>
-    /// Логика взаимодействия для Reg.xaml
+    /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class Reg : Window
+    public partial class Window1 : Window
     {
-        public Reg()
+        public Window1()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
     }
 }
