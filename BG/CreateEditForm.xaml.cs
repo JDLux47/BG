@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BG
 {
     /// <summary>
-    /// Логика взаимодействия для Window1.xaml
+    /// Логика взаимодействия для CreateEditForm.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class CreateEditForm : Window
     {
-        public Window1()
+        public CreateEditForm()
         {
             InitializeComponent();
         }

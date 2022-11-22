@@ -1,0 +1,18 @@
+﻿<Window x:Class="BG.CategoryCreate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BG"
+        mc:Ignorable="d"
+        Title="CategoryCreate" Height="230" Width="246.554" MaxHeight="230" MaxWidth="246.554" MinHeight="230" MinWidth="246.554">
+    <Grid>
+        <GroupBox Header="Введите название категории" HorizontalAlignment="Left" Height="98" Margin="10,10,0,0" VerticalAlignment="Top" Width="219">
+            <Grid Margin="0,-8,0,-8.4" Width="209">
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="38" Margin="10,15,10,9.8" />
+            </Grid>
+        </GroupBox>
+        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Создать" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="11,148,126,10.4" Background="DarkViolet" Height="32"/>
+        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Отмена" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="136,148,10,10.4" Background="DarkViolet" Height="32"/>
+    </Grid>
+</Window>

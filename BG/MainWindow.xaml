@@ -13,12 +13,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BG"
         mc:Ignorable="d"
-        Title="MainWindow" Height="496.8" Width="800" WindowState="Maximized" WindowStyle="None">
+        Title="MainWindow" Height="auto" Width="auto" WindowState="Normal" WindowStyle="SingleBorderWindow">
 
     <Grid Margin="0,0,-0.4,0.4">
-        <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True" SnapsToDevicePixels="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Left">
+        <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True" SnapsToDevicePixels="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Left" Foreground="DarkViolet">
 
-            <TabItem Height="90" Width="109">
+            <TabItem Height="90" Width="109" Foreground="DarkViolet">
 
                 <TabItem.Header>
                     <StackPanel Width="auto" Height="auto">
@@ -34,18 +34,18 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Image HorizontalAlignment="Left" Height="273" Margin="10,10,0,0" VerticalAlignment="Top" Width="322"/>
-                    <Label Content="Имя" HorizontalAlignment="Left" Margin="9.6,53,0,0" VerticalAlignment="Top" Width="110" Height="32" Grid.Column="1"/>
-                    <Label Content="Баланс" HorizontalAlignment="Left" Margin="9.6,103,0,0" VerticalAlignment="Top" Width="110" Height="32" Grid.Column="1"/>
-                    <Label Content="Дата" HorizontalAlignment="Left" Margin="9.6,155,0,0" VerticalAlignment="Top" Width="110" Height="32" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="32" Margin="125.6,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Grid.Column="1" />
-                    <TextBox HorizontalAlignment="Left" Height="32" Margin="125.6,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="32" Margin="125.6,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Grid.Column="1"/>
+                    <materialDesign:PackIcon Kind="AccountCircle" Height="316" Width="316" Margin="10,0,0,0" Foreground="DarkViolet" HorizontalAlignment="Center"/>
+                    <Label Content="Имя" HorizontalAlignment="Left" Margin="15.6,53,0,0" VerticalAlignment="Top" Width="auto" Height="auto" Grid.Column="1" FontSize="24"/>
+                    <Label Content="Баланс" HorizontalAlignment="Left" Margin="15.6,119,0,0" VerticalAlignment="Top" Width="auto" Height="auto" Grid.Column="1" FontSize="24"/>
+                    <Label Content="Дата" HorizontalAlignment="Left" Margin="15.6,187,0,0" VerticalAlignment="Top" Width="auto" Height="auto" Grid.Column="1" FontSize="24"/>
+                    <TextBox HorizontalAlignment="Left" Height="42" Margin="121.6,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Grid.Column="1" FontSize="24" />
+                    <TextBox HorizontalAlignment="Left" Height="42" Margin="121.6,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Grid.Column="1" FontSize="24"/>
+                    <TextBox HorizontalAlignment="Left" Height="42" Margin="121.6,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Grid.Column="1" FontSize="24"/>
 
                 </Grid>
             </TabItem>
 
-            <TabItem Height="90" Width="109">
+            <TabItem Height="90" Width="109" Foreground="DarkViolet">
 
                 <TabItem.Header>
                     <StackPanel Width="auto" Height="auto">
@@ -61,24 +61,24 @@
                         <ColumnDefinition Width="31*"/>
                     </Grid.ColumnDefinitions>
 
-                    <DataGrid ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,10.8,10.2"/>
+                    <DataGrid Name ="DataIncome" ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,10.8,10.2"/>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,10,23.8,390.2" Height="100" Width="100">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,10,23.8,390.2" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Plus" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,105,23.8,250.2" Height="100" Width="100">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,105,23.8,250.2" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Edit" Height="75" Width="75" />
                     </Button>
-                    
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,200,23.8,110.2" Height="100" Width="100">
+
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,200,23.8,110.2" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Delete" Height="75" Width="75" />
                     </Button>
                 </Grid>
 
             </TabItem>
 
-            <TabItem Height="90" Width="109">
+            <TabItem Height="90" Width="109" Foreground="DarkViolet">
 
                 <TabItem.Header>
                     <StackPanel Width="auto" Height="auto">
@@ -94,25 +94,25 @@
                         <ColumnDefinition Width="31*"/>
                     </Grid.ColumnDefinitions>
 
-                    <DataGrid ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,11,10.2"/>
-                    
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,10,23.8,390.2" Height="100" Width="100">
+                    <DataGrid Name ="DataCosts" ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,11,10.2"/>
+
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,10,23.8,390.2" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Plus" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,105,23.8,250.2" Height="100" Width="100">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,105,23.8,250.2" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Edit" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,200,23.8,110.2" Height="100" Width="100">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,200,23.8,110.2" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Delete" Height="75" Width="75" />
                     </Button>
-                    
+
                 </Grid>
 
             </TabItem>
 
-            <TabItem Height="90" Width="109">
+            <TabItem Height="90" Width="109" Foreground="DarkViolet">
 
                 <TabItem.Header>
                     <StackPanel Width="auto" Height="auto">
@@ -127,7 +127,7 @@
                 </Grid>
 
             </TabItem>
-
+                
         </TabControl>
     </Grid>
 </Window>

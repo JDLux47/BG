@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BG
 {
     /// <summary>
-    /// Логика взаимодействия для Reg.xaml
+    /// Логика взаимодействия для CategoryCreate.xaml
     /// </summary>
-    public partial class Registration : Window
+    public partial class CategoryCreate : Window
     {
-        public Registration()
+        public CategoryCreate()
         {
             InitializeComponent();
         }
