@@ -63,17 +63,28 @@
 
                     <DataGrid Name ="DataIncome" ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,10.8,10.2"/>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,10,23.8,390.2" Height="100" Width="100" Background="DarkViolet">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,10,8.8,395.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Plus" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,105,23.8,250.2" Height="100" Width="100" Background="DarkViolet">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,115,8.8,290.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Edit" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,200,23.8,110.2" Height="100" Width="100" Background="DarkViolet">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,220,8.8,185.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Delete" Height="75" Width="75" />
                     </Button>
+
+                    <!--<Label Margin="9.6,375,28.8,130.4" Grid.Column="1">Сортировка</Label>
+                    
+                    <ListBox Name="list1BoxZone" Margin="9.6,395,9.8,-21.6" Grid.ColumnSpan="1" Grid.Column="1" Height="auto" Width="auto">
+                        <CheckBox Content="Зарплата"/>
+                        <CheckBox Content="Пенсия"/>
+                        <CheckBox Content="Рента"/>
+                        <CheckBox Content="Бизнес"/>
+                        <CheckBox Content="Другое"/>
+                    </ListBox>-->
+                    
                 </Grid>
 
             </TabItem>
@@ -96,17 +107,27 @@
 
                     <DataGrid Name ="DataCosts" ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,11,10.2"/>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,10,23.8,390.2" Height="100" Width="100" Background="DarkViolet">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,10,8.8,395.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Plus" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,105,23.8,250.2" Height="100" Width="100" Background="DarkViolet">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,115,8.8,290.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Edit" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="10.2,200,23.8,110.2" Height="100" Width="100" Background="DarkViolet">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,220,8.8,185.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Delete" Height="75" Width="75" />
                     </Button>
+
+                    <!--<Label Margin="9.6,375,28.8,130.4" Grid.Column="1">Сортировка</Label>
+
+                    <ListBox Name="listBoxZone" Margin="9.6,395,9.8,-21.6" Grid.ColumnSpan="1" Grid.Column="1" Height="auto" Width="auto">
+                        <CheckBox Content="Продукты"/>
+                        <CheckBox Content="Развлечения"/>
+                        <CheckBox Content="Одежда"/>
+                        <CheckBox Content="Услуги"/>
+                        <CheckBox Content="Другое"/>
+                    </ListBox>-->
 
                 </Grid>
 
@@ -127,7 +148,7 @@
                 </Grid>
 
             </TabItem>
-                
+
         </TabControl>
     </Grid>
 </Window>

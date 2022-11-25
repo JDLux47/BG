@@ -23,8 +23,8 @@ namespace BG
         public MainWindow()
         {
             InitializeComponent();
-            //Registration registration = new Registration();
-            //registration.Show();
+            Registration registration = new Registration();
+            registration.Show();
             CreateEditForm createEditForm = new CreateEditForm();
             createEditForm.Show();
             CategoryCreate category = new CategoryCreate();
