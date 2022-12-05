@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Models
 {
-    public class Costs
+    public class CostsModel
     {
         public int ID { get; set; }
 
@@ -18,8 +19,8 @@ namespace BLL.Models
 
         public int ID_User { get; set; }
 
-        public Costs() { }
-        public Costs(Costs A)
+        public CostsModel() { }
+        public CostsModel(Costs A)
         {
             ID = A.ID;
             ID_CostsCategory = A.ID_CostsCategory;

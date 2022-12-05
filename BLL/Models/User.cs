@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Models
 {
-    public class User
+    public class UserModel
     {
         public int ID { get; set; }
 
@@ -21,8 +22,8 @@ namespace BLL.Models
 
         public DateTime DateUpdateBalance { get; set; }
 
-        public User() { }
-        public User(User A)
+        public UserModel() { }
+        public UserModel(User A)
         {
             ID = A.ID;
             Password = A.Password;

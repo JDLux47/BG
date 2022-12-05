@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Models
 {
-    public class Income
+    public class IncomeModel
     {
         public int ID { get; set; }
 
@@ -18,8 +19,8 @@ namespace BLL.Models
 
         public int ID_User { get; set; }
 
-        public Income() { }
-        public Income(Income A)
+        public IncomeModel() { }
+        public IncomeModel(Income A)
         {
             ID = A.ID;
             ID_IncomeCategory = A.ID_IncomeCategory;
