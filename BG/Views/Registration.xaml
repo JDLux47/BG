@@ -19,33 +19,17 @@
         <TabItem Header="Зарегистрироваться">
             <Grid Margin="0,0,3.4,0.8">
 
-                <materialDesign:PackIcon Kind="AccountBox" Height="180" Width="180" Margin="160,6,0,0" />
+                <materialDesign:PackIcon Kind="AccountBox" Height="180" Width="180" Margin="159,-10,0,0" />
 
-                <TextBox x:Name="NameTextBox" materialDesign:HintAssist.Hint="Имя" materialDesign:HintAssist.HelperText="Имя пользователя" Margin="63,220,62.2,176.8" Foreground="Black">
-                    <TextBox.Text>
-                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                <StackPanel DataContext="{Binding User}" Margin="100,170,112.2,74.2" >
+                    <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" x:Name="LoginTextBox" materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.HelperText="Логин пользователя" Margin="0,0,0,0" Foreground="Black" Height="25"/>
+                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" x:Name="NameTextBox" materialDesign:HintAssist.Hint="Имя" materialDesign:HintAssist.HelperText="Имя пользователя" Margin="0,20,0,0" Foreground="Black" Height="25"/>
+                    <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" x:Name="PasswordBox" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.HelperText="Пароль из 8 цифр" Margin="0,20,0,0" Foreground="Black" Height="25"/>
+                    <TextBox Text="{Binding Balance, UpdateSourceTrigger=PropertyChanged}" x:Name="BalanceTextBox" materialDesign:HintAssist.Hint="Баланс" materialDesign:HintAssist.HelperText="Баланс, сумма в рублях" Margin="0,20,0,0" Foreground="Black" Height="25"/>
+                </StackPanel>
 
-                <PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.HelperText="Минимум 8 символов" Margin="62,271,65.2,124.8" Foreground="Black"/>
-
-                <TextBox x:Name="BalanceTextBox" materialDesign:HintAssist.Hint="Баланс" materialDesign:HintAssist.HelperText="Сумма в рублях" Margin="63,319,61.2,77.8" Foreground="Black">
-                    <TextBox.Text>
-                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-
-                <TextBox x:Name="LoginTextBox" materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.HelperText="Логин пользователя" Margin="63,175,61.2,221.8" Foreground="Black">
-                    <TextBox.Text>
-                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-
-                <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Зарегистрироваться" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="62,374,259.2,22" Background="DarkViolet" Height="auto"/>
-                <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Отмена" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="287,374,65.2,22" Background="DarkViolet" Height="auto"/>
+                <Button Command ="{Binding RegistrationNew}" CommandParameter="{Binding User}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Зарегистрироваться" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="62,374,259.2,22" Background="DarkViolet" Height="auto"/>
+                <Button Command ="{Binding CloseRegistration}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Отмена" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="287,374,65.2,22" Background="DarkViolet" Height="auto"/>
             </Grid>
         </TabItem>
 
@@ -54,17 +38,13 @@
 
                 <materialDesign:PackIcon Kind="AccountBox" Height="180" Width="180" Margin="160,6,0,0" Foreground="DarkViolet"/>
 
-                <PasswordBox x:Name="PasswordLogBox" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.HelperText="Минимум 8 символов" Margin="66,247,61.2,149.2" Foreground="Black"/>
+                <StackPanel DataContext="{Binding User}" Margin="105,207,107.2,130" >
+                    <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" x:Name="LoginLogTextBox" materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.HelperText="Логин пользователя" Margin="0,0,-0.6,0" Foreground="Black" Height="25"/>
+                    <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" x:Name="PasswordLogBox" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.HelperText="Пароль из 8 цифр" Margin="0,20,0,0" Foreground="Black" Height="25"/>
+                </StackPanel>
 
-                <TextBox x:Name="LoginLogTextBox" materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.HelperText="Логин пользователя" Margin="64,188,61.2,209" Foreground="Black">
-                    <TextBox.Text>
-                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-
-                <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Войти" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="63,374,289.2,22" Background="DarkViolet" Height="auto"/>
-                <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Отмена" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="288,374,64.2,22" Background="DarkViolet" Height="auto"/>
+                <Button Command ="{Binding OpenNewMainWindow}" CommandParameter="{Binding User}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Войти" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="63,374,289.2,22" Background="DarkViolet" Height="auto"/>
+                <Button Command ="{Binding CloseRegistration}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Отмена" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="288,374,64.2,22" Background="DarkViolet" Height="auto"/>
             </Grid>
         </TabItem>
     </TabControl>

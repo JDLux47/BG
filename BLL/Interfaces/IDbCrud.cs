@@ -13,6 +13,8 @@ namespace BLL.Interfaces
         List<CostsCategoryModel> GetAllCostsCategory();
         List<IncomeModel> GetAllIncome();
         List<IncomeCategoryModel> GetAllIncomeCategory();
+        List<UserModel> GetAllUsers();
+        List<string> GetAllIncomeCategoryNames();
 
         CostsModel GetCost(int ID);
         CostsCategoryModel GetCostCategory(int ID);
@@ -24,8 +26,11 @@ namespace BLL.Interfaces
         void CreateIncomeCategory(IncomeCategoryModel obj);
         void CreateCost(CostsModel obj);
         void CreateIncome(IncomeModel obj);
+        void CreateUser(UserModel obj);
 
         void UpdateUser(UserModel obj);
+        void UpdateIncome(IncomeModel obj);
+        void UpdateCosts(CostsModel obj);
 
         void DeleteIncome(int ID);
         void DeleteIncomeCategory(int ID);

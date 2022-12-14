@@ -1,4 +1,5 @@
 ﻿using BG.Until;
+using BG.ViewModels;
 using BLL.Interfaces;
 using BLL.Until;
 using Ninject;
@@ -14,23 +15,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BG
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для CreateEditForm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UpdateIncomeForm : Window
     {
-        public MainWindow(BLL.Models.UserModel userModel)
+        public UpdateIncomeForm(BLL.Models.IncomeModel income)
         {
             var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule("Context"));
             IDbCrud crudServ = kernel.Get<IDbCrud>();
 
             InitializeComponent();
-            DataContext = new MainController(crudServ, this, userModel);
+            DataContext = new UpdateIncomeController(crudServ, this, income);
         }
     }
 }

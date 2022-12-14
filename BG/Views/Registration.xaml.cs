@@ -1,4 +1,9 @@
-﻿using System;
+﻿using BG.Until;
+using BG.ViewModels;
+using BLL.Interfaces;
+using BLL.Until;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +26,11 @@ namespace BG
     {
         public Registration()
         {
+            var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule("Context"));
+            IDbCrud crudServ = kernel.Get<IDbCrud>();
+
             InitializeComponent();
+            DataContext = new EnterController(crudServ, this);
         }
     }
 }

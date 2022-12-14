@@ -53,12 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context.cs" />
     <Compile Include="Entities\Costs.cs" />
     <Compile Include="Entities\CostsCategory.cs" />
     <Compile Include="Entities\Income.cs" />
     <Compile Include="Entities\IncomeCategory.cs" />
-    <Compile Include="Entities\Model1.cs" />
+    <Compile Include="Context.cs" />
     <Compile Include="Entities\sysdiagrams.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

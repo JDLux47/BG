@@ -1,4 +1,9 @@
-﻿using System;
+﻿using BG.Until;
+using BG.ViewModels;
+using BLL.Interfaces;
+using BLL.Until;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +22,15 @@ namespace BG
     /// <summary>
     /// Логика взаимодействия для CreateEditForm.xaml
     /// </summary>
-    public partial class CreateEditForm : Window
+    public partial class UpdateCostForm : Window
     {
-        public CreateEditForm()
+        public UpdateCostForm(BLL.Models.CostsModel cost)
         {
+            var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule("Context"));
+            IDbCrud crudServ = kernel.Get<IDbCrud>();
+
             InitializeComponent();
+            DataContext = new UpdateCostController(crudServ, this, cost);
         }
     }
 }

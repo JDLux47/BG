@@ -35,12 +35,18 @@
                     </Grid.ColumnDefinitions>
 
                     <materialDesign:PackIcon Kind="AccountCircle" Height="316" Width="316" Margin="10,0,0,0" Foreground="DarkViolet" HorizontalAlignment="Center"/>
-                    <Label Content="Имя" HorizontalAlignment="Left" Margin="15.6,53,0,0" VerticalAlignment="Top" Width="auto" Height="auto" Grid.Column="1" FontSize="24"/>
-                    <Label Content="Баланс" HorizontalAlignment="Left" Margin="15.6,119,0,0" VerticalAlignment="Top" Width="auto" Height="auto" Grid.Column="1" FontSize="24"/>
-                    <Label Content="Дата" HorizontalAlignment="Left" Margin="15.6,187,0,0" VerticalAlignment="Top" Width="auto" Height="auto" Grid.Column="1" FontSize="24"/>
-                    <TextBox HorizontalAlignment="Left" Height="42" Margin="121.6,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Grid.Column="1" FontSize="24" />
-                    <TextBox HorizontalAlignment="Left" Height="42" Margin="121.6,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Grid.Column="1" FontSize="24"/>
-                    <TextBox HorizontalAlignment="Left" Height="42" Margin="121.6,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Grid.Column="1" FontSize="24"/>
+
+                    <StackPanel Margin="0,0,164.8,187" Grid.Column="1">
+                        <Label Content="Имя" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto" FontSize="24" Margin="0,30,0,0"/>
+                        <Label Content="Баланс" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto" FontSize="24" Margin="0,20,0,0"/>
+                        <Label Content="Дата" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto" FontSize="24" Margin="0,20,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel DataContext="{Binding User}" Margin="161.6,0,0,187" Grid.Column="1">
+                        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" x:Name = "Name" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,0,0"/>
+                        <TextBox Text="{Binding Balance, UpdateSourceTrigger=PropertyChanged}" x:Name = "Balance" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,0,0"/>
+                        <TextBox Text="{Binding DateUpdateBalance, UpdateSourceTrigger=PropertyChanged}" x:Name = "Date" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,0,0"/>
+                    </StackPanel>
 
                 </Grid>
             </TabItem>
@@ -61,17 +67,25 @@
                         <ColumnDefinition Width="31*"/>
                     </Grid.ColumnDefinitions>
 
-                    <DataGrid Name ="DataIncome" ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,10.8,10.2"/>
+                    <ListView ItemsSource="{Binding Incomes}" SelectedItem="{Binding SelectedIncome}" Margin="0,0,0,0" Grid.Column="0" Foreground="Black" FontSize="14" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Sum}" Header="Сумма" Width="200"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Дата" Width="200"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding ID_IncomeCategory}" Header="Категория" Width="200"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,10,8.8,395.4" Height="100" Width="100" Background="DarkViolet">
+                    <Button Command ="{Binding addIncome}" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,10,8.8,395.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Plus" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,115,8.8,290.4" Height="100" Width="100" Background="DarkViolet">
+                    <Button Command ="{Binding updateIncome}" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,115,8.8,290.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Edit" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,220,8.8,185.4" Height="100" Width="100" Background="DarkViolet">
+                    <Button Command ="{Binding deleteIncome}" CommandParameter="{Binding SelectedIncome}" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,220,8.8,185.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Delete" Height="75" Width="75" />
                     </Button>
 
@@ -84,7 +98,7 @@
                         <CheckBox Content="Бизнес"/>
                         <CheckBox Content="Другое"/>
                     </ListBox>-->
-                    
+
                 </Grid>
 
             </TabItem>
@@ -105,17 +119,25 @@
                         <ColumnDefinition Width="31*"/>
                     </Grid.ColumnDefinitions>
 
-                    <DataGrid Name ="DataCosts" ItemsSource="{Binding Items1}" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All" SelectionUnit="{Binding SelectedValue, ElementName=selectionUnitComboBox}" Margin="10,10,11,10.2"/>
+                    <ListView ItemsSource="{Binding Costs}" SelectedItem="{Binding SelectedCost}" Margin="0,0,0,0" Grid.Column="0" Foreground="Black" FontSize="14" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Sum}" Header="Сумма" Width="200"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Дата" Width="200"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding ID_CostsCategory}" Header="Категория" Width="200"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,10,8.8,395.4" Height="100" Width="100" Background="DarkViolet">
+                    <Button Command ="{Binding addCosts}" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,10,8.8,395.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Plus" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,115,8.8,290.4" Height="100" Width="100" Background="DarkViolet">
+                    <Button Command ="{Binding updateCosts}" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,115,8.8,290.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Edit" Height="75" Width="75" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,220,8.8,185.4" Height="100" Width="100" Background="DarkViolet">
+                    <Button Command ="{Binding deleteCosts}" CommandParameter="{Binding SelectedCost}" Style="{StaticResource MaterialDesignFloatingActionButton}" ToolTip="MaterialDesignFloatingActionButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Column="1" Margin="9.6,220,8.8,185.4" Height="100" Width="100" Background="DarkViolet">
                         <materialDesign:PackIcon Kind="Delete" Height="75" Width="75" />
                     </Button>
 

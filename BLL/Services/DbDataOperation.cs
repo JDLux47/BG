@@ -42,6 +42,12 @@ namespace BLL.Services
             Save();
         }
 
+        public void CreateUser(UserModel obj)
+        {
+            db.Users.Create(new User() { Password = obj.Password, Name = obj.Name, Balance = obj.Balance, Login = obj.Login, SumLimiter = obj.SumLimiter, DateUpdateBalance = obj.DateUpdateBalance });
+            Save();
+        }
+
         public void DeleteCost(int ID)
         {
             Costs obj = db.Costss.GetItem(ID);
@@ -87,6 +93,11 @@ namespace BLL.Services
             return db.Costss.GetList().Select(i => new CostsModel(i)).ToList();
         }
 
+        public List<UserModel> GetAllUsers()
+        {
+            return db.Users.GetList().Select(i => new UserModel(i)).ToList();
+        }
+
         public List<CostsCategoryModel> GetAllCostsCategory()
         {
             return db.CostsCategories.GetList().Select(i => new CostsCategoryModel(i)).ToList();
@@ -100,6 +111,11 @@ namespace BLL.Services
         public List<IncomeCategoryModel> GetAllIncomeCategory()
         {
             return db.IncomeCategories.GetList().Select(i => new IncomeCategoryModel(i)).ToList();
+        }
+
+        public List<string> GetAllIncomeCategoryNames()
+        {
+            return db.IncomeCategories.GetList().Select(i => i.Name).ToList();
         }
 
         public CostsModel GetCost(int ID)
@@ -136,6 +152,28 @@ namespace BLL.Services
             user.Password = obj.Password;
             user.SumLimiter = obj.SumLimiter;
             user.Balance = obj.Balance;
+
+            Save();
+        }
+
+        public void UpdateIncome(IncomeModel obj)
+        {
+            Income income = db.Incomes.GetItem(obj.ID);
+
+            income.ID_IncomeCategory = obj.ID_IncomeCategory;
+            income.Sum = obj.Sum;
+            income.Date = obj.Date;
+
+            Save();
+        }
+
+        public void UpdateCosts(CostsModel obj)
+        {
+            Costs costs = db.Costss.GetItem(obj.ID);
+
+            costs.ID_CostsCategory = obj.ID_CostsCategory;
+            costs.Sum = obj.Sum;
+            costs.Date = obj.Date;
 
             Save();
         }
