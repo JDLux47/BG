@@ -20,7 +20,7 @@
             <GroupBox Header="Выберите категорию" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="246" Margin="20,10,0,0">
                 <Grid Margin="0,-8" Width="201">
                     <ComboBox ItemsSource="{Binding DataContext.IncomeCategories, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedItem="{Binding  DataContext.IncomeCategory, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148"/>
-                    <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Добавить новую" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="10,61,43,10" Background="DarkViolet" Height="auto"/>
+                    <Button Command = "{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.CreateNewCategory}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Добавить новую" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="10,61,43,10" Background="DarkViolet" Height="auto"/>
                 </Grid>
             </GroupBox>
             <GroupBox Header="Введите сумму транзакции" HorizontalAlignment="Left" Height="97" VerticalAlignment="Top" Width="246" Margin="20,10,0,0">
@@ -28,7 +28,6 @@
                     <TextBox  Text ="{Binding Sum, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="38" Margin="10" />
                 </Grid>
             </GroupBox>
-
         </StackPanel>
 
         <Button Command ="{Binding Create}" CommandParameter="{Binding IncomeCategory}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Создать" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="10,378,158,10" Background="DarkViolet" Height="auto"/>

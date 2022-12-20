@@ -1,4 +1,8 @@
-﻿using System;
+﻿using BG.Until;
+using BLL.Interfaces;
+using BLL.Until;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +16,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BG
+namespace BG.Views
 {
     /// <summary>
     /// Логика взаимодействия для CategoryCreate.xaml
     /// </summary>
-    public partial class CategoryCreate : Window
+    public partial class IncomeCategoryCreate : Window
     {
-        public CategoryCreate()
+        public IncomeCategoryCreate()
         {
+            var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule("Context"));
+            IDbCrud crudServ = kernel.Get<IDbCrud>();
+
             InitializeComponent();
+            DataContext = new CreateIncomeCategory(crudServ, this);
         }
     }
 }

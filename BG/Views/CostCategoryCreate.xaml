@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BG.Views"
         mc:Ignorable="d"
-        Title="CostCategoryCreate" Height="450" Width="800">
+        Title="CostCategoryCreate" Height="230" Width="246.554" MaxHeight="230" MaxWidth="246.554" MinHeight="230" MinWidth="246.554">
     <Grid>
-        
+        <GroupBox DataContext="{ Binding CostCategory}" Header="Введите название категории" HorizontalAlignment="Left" Height="98" Margin="10,10,0,0" VerticalAlignment="Top" Width="219">
+            <Grid Margin="0,-8,0,-8.4" Width="209">
+                <TextBox Text ="{ Binding Name}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="38" Margin="10,15,10,9.8" />
+            </Grid>
+        </GroupBox>
+        <Button Command="{Binding Add}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Создать" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="11,148,126,10.4" Background="DarkViolet" Height="32"/>
+        <Button Command="{Binding CloseWindow}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Content="Отмена" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="136,148,10,10.4" Background="DarkViolet" Height="32"/>
     </Grid>
 </Window>

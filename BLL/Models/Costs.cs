@@ -15,6 +15,7 @@ namespace BLL.Models
         private int? id_CostsCategory;
         private decimal sum;
         private DateTime date;
+        private string costsCategory;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -51,6 +52,16 @@ namespace BLL.Models
             {
                 date = value;
                 OnPropertyChanged("Date");
+            }
+        }
+
+        public string CostsCategory
+        {
+            get { return costsCategory; }
+            set
+            {
+                costsCategory = value;
+                OnPropertyChanged("CostsCategory");
             }
         }
 

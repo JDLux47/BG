@@ -14,7 +14,7 @@ namespace BLL.Models
     {
         private int password;
         private string name;
-        private double balance;
+        private decimal balance;
         private string login;
         private DateTime dateUpdateBalance;
 
@@ -51,7 +51,7 @@ namespace BLL.Models
                 OnPropertyChanged("Login");
             }
         }
-        public double Balance
+        public decimal Balance
         {
             get { return balance; }
             set

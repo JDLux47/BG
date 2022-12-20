@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using BG.Models;
+using BG.Views;
 using BLL.Interfaces;
 using BLL.Models;
 
@@ -100,6 +101,18 @@ namespace BG.ViewModels
             }
         }
 
+        private RelayCommand createNewCategory;
+        public RelayCommand CreateNewCategory
+        {
+            get
+            {
+                return createNewCategory ?? new RelayCommand(obj =>
+                {
+                    CreateCategory();
+                });
+            }
+        }
+
 
         public void CloseThisWindow()
         {
@@ -115,6 +128,17 @@ namespace BG.ViewModels
 
             income.ID_User = user.ID;
             db.CreateIncome(income);
+
+            CloseThisWindow();
+        }
+
+        public void CreateCategory()
+        {
+            createForm.Hide();
+
+            IncomeCategoryCreate incomeCategory = new IncomeCategoryCreate();
+            incomeCategory.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            incomeCategory.ShowDialog();
 
             CloseThisWindow();
         }

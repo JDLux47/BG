@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using BG.Views;
 
 namespace BG.ViewModels
 {
@@ -57,7 +58,7 @@ namespace BG.ViewModels
 
         public void GetCategory()
         {
-            if (income.ID_IncomeCategory != 0)
+            if (income.ID_IncomeCategory != null)
                 incomeCategory = db.GetIncomeCategory(Convert.ToInt32(income.ID_IncomeCategory));
             else
                 incomeCategory = null;
@@ -93,6 +94,18 @@ namespace BG.ViewModels
             }
         }
 
+        private RelayCommand createNewCategory;
+        public RelayCommand CreateNewCategory
+        {
+            get
+            {
+                return createNewCategory ?? new RelayCommand(obj =>
+                {
+                    CreateCategory();
+                });
+            }
+        }
+
 
 
         public void CloseThisWindow()
@@ -108,6 +121,17 @@ namespace BG.ViewModels
                 income.ID_IncomeCategory = IncomeCategory.ID;
 
             db.UpdateIncome(income);
+
+            CloseThisWindow();
+        }
+
+        public void CreateCategory()
+        {
+            updateForm.Hide();
+
+            IncomeCategoryCreate incomeCategory = new IncomeCategoryCreate();
+            incomeCategory.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            incomeCategory.ShowDialog();
 
             CloseThisWindow();
         }

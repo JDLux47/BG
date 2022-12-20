@@ -1,8 +1,11 @@
-﻿using BLL.Interfaces;
+﻿using BG.Views;
+using BLL.Interfaces;
 using BLL.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace BG.ViewModels
@@ -34,7 +37,7 @@ namespace BG.ViewModels
             }
         }
 
-        public List<CostsCategoryModel> CostCategories { get; set; }
+        public ObservableCollection<CostsCategoryModel> CostCategories { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -56,7 +59,7 @@ namespace BG.ViewModels
 
         public void GetCategory()
         {
-            if (cost.ID_CostsCategory != 0)
+            if (cost.ID_CostsCategory != null)
                 costCategory = db.GetCostCategory(Convert.ToInt32(cost.ID_CostsCategory));
             else
                 costCategory = null;
@@ -64,7 +67,7 @@ namespace BG.ViewModels
 
         public void CategoriesLoad()
         {
-            CostCategories = db.GetAllCostsCategory();
+            CostCategories = new ObservableCollection<CostsCategoryModel>(db.GetAllCostsCategory());
         }
 
 
@@ -92,6 +95,17 @@ namespace BG.ViewModels
             }
         }
 
+        private RelayCommand createNewCategory;
+        public RelayCommand CreateNewCategory
+        {
+            get
+            {
+                return createNewCategory ?? new RelayCommand(obj =>
+                {
+                    CreateCategory();
+                });
+            }
+        }
 
 
         public void CloseThisWindow()
@@ -107,6 +121,17 @@ namespace BG.ViewModels
                 cost.ID_CostsCategory = CostCategory.ID;
 
             db.UpdateCosts(cost);
+
+            CloseThisWindow();
+        }
+
+        public void CreateCategory()
+        {
+            updateCostForm.Hide();
+
+            CostCategoryCreate costCategory = new CostCategoryCreate();
+            costCategory.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            costCategory.ShowDialog();
 
             CloseThisWindow();
         }

@@ -1,6 +1,7 @@
 ﻿using BG.ViewModels;
 using BLL.Interfaces;
 using BLL.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -52,6 +53,7 @@ namespace BG
 
         public ObservableCollection<CostsModel> Costs { get; set; }
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -73,11 +75,33 @@ namespace BG
         public void IncomesLoad()
         {
             Incomes = new ObservableCollection<IncomeModel>(db.GetAllIncome().Where(i => i.ID_User == user.ID));
+
+            ChangeIndexToCategoryIncome();
+        }
+
+        public void ChangeIndexToCategoryIncome()
+        {
+            for (int i = 0; i < Incomes.Count; i++)
+                if (Incomes[i].ID_IncomeCategory != null)
+                    Incomes[i].IncomeCategory = db.GetIncomeCategory(Convert.ToInt32(Incomes[i].ID_IncomeCategory)).Name;
+                else
+                    Incomes[i].IncomeCategory = "без категории";
         }
 
         public void CostsLoad()
         {
             Costs = new ObservableCollection<CostsModel>(db.GetAllCosts().Where(i => i.ID_User == user.ID));
+
+            ChangeIndexCategoryCosts();
+        }
+
+        public void ChangeIndexCategoryCosts()
+        {
+            for (int i = 0; i < Costs.Count; i++)
+                if (Costs[i].ID_CostsCategory != null)
+                    Costs[i].CostsCategory = db.GetCostCategory(Convert.ToInt32(Costs[i].ID_CostsCategory)).Name;
+                else
+                    Costs[i].CostsCategory = "без категории";
         }
 
         #region COMMANDS
@@ -159,6 +183,18 @@ namespace BG
             }
         }
 
+        private RelayCommand exit;
+        public RelayCommand Exit
+        {
+            get
+            {
+                return exit ?? new RelayCommand(obj =>
+                {
+                    ExitWindow();
+                });
+            }
+        }
+
         #endregion
 
 
@@ -168,7 +204,15 @@ namespace BG
             CreateCost.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             CreateCost.ShowDialog();
 
-            Costs.Insert(Costs.Count, db.GetAllCosts().Last());
+            List<CostsModel> costs = db.GetAllCosts();
+
+            if (Costs.Count < costs.Count)
+            {
+                Costs.Insert(Costs.Count, costs.Last());
+                ChangeIndexCategoryCosts();
+                user.Balance -= Costs.Last().Sum;
+                db.UpdateUser(user);
+            }
         }
 
         public void DelCosts()
@@ -183,7 +227,7 @@ namespace BG
             updateForm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             updateForm.ShowDialog();
 
-            CostsLoad();
+            ChangeIndexCategoryCosts();
         }
 
         public void AddNewIncome()
@@ -191,9 +235,16 @@ namespace BG
             CreateIncomeForm CreateIncome = new CreateIncomeForm(user);
             CreateIncome.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             CreateIncome.ShowDialog();
-            
-            if(Incomes.Count < db.GetAllIncome().Count)
-                Incomes.Insert(Incomes.Count, db.GetAllIncome().Last());
+
+            List<IncomeModel> incomes = db.GetAllIncome();
+
+            if (Incomes.Count < incomes.Count)
+            {
+                Incomes.Insert(Incomes.Count, incomes.Last());
+                ChangeIndexToCategoryIncome();
+                user.Balance += Incomes.Last().Sum;
+                db.UpdateUser(user);
+            }
         }
 
         public void DelIncome()
@@ -208,7 +259,13 @@ namespace BG
             updateForm.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             updateForm.ShowDialog();
 
-            IncomesLoad();
+            ChangeIndexToCategoryIncome();
+        }
+
+        public void ExitWindow()
+        {
+            db.UpdateUser(user);
+            mainWindow.Close();
         }
     }
 }

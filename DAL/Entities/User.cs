@@ -24,7 +24,7 @@ namespace DAL.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        public double Balance { get; set; }
+        public decimal Balance { get; set; }
 
         [Required]
         [StringLength(50)]

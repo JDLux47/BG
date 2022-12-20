@@ -74,7 +74,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\UserM.cs" />
+    <Compile Include="Models\CostsM.cs" />
+    <Compile Include="Models\IncomeM.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\EnterController.cs" />
     <Compile Include="Views\CostCategoryCreate.xaml.cs">
@@ -82,10 +83,12 @@
     </Compile>
     <Compile Include="ViewModels\UpdateIncomeController.cs" />
     <Compile Include="ViewModels\CreateCostController.cs" />
+    <Compile Include="ViewModels\CreateCostCategory.cs" />
     <Compile Include="Views\CreateCostForm.xaml.cs">
       <DependentUpon>CreateCostForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\UpdateCostController.cs" />
+    <Compile Include="ViewModels\CreateIncomeCategory.cs" />
     <Compile Include="Views\UpdateCostForm.xaml.cs">
       <DependentUpon>UpdateCostForm.xaml</DependentUpon>
     </Compile>

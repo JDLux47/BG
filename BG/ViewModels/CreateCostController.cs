@@ -1,4 +1,5 @@
-﻿using BLL.Interfaces;
+﻿using BG.Views;
+using BLL.Interfaces;
 using BLL.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,6 +95,17 @@ namespace BG.ViewModels
             }
         }
 
+        private RelayCommand createNewCategory;
+        public RelayCommand CreateNewCategory
+        {
+            get
+            {
+                return createNewCategory ?? new RelayCommand(obj =>
+                {
+                    CreateCategory();
+                });
+            }
+        }
 
         public void CloseThisWindow()
         {
@@ -112,5 +124,17 @@ namespace BG.ViewModels
 
             CloseThisWindow();
         }
+
+        public void CreateCategory()
+        {
+            createCostForm.Hide();
+
+            CostCategoryCreate costCategory = new CostCategoryCreate();
+            costCategory.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            costCategory.ShowDialog();
+
+            CloseThisWindow();
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="BG.MainWindow"
+﻿<Window x:Name="clos" x:Class="BG.MainWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,9 +13,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BG"
         mc:Ignorable="d"
-        Title="MainWindow" Height="auto" Width="auto" WindowState="Normal" WindowStyle="SingleBorderWindow">
+        Title="MainWindow" Height="auto" Width="auto" WindowState="Normal" WindowStyle="None" MinHeight="535.2" MinWidth="768">
 
     <Grid Margin="0,0,-0.4,0.4">
+
         <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True" SnapsToDevicePixels="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Left" Foreground="DarkViolet">
 
             <TabItem Height="90" Width="109" Foreground="DarkViolet">
@@ -44,8 +45,8 @@
 
                     <StackPanel DataContext="{Binding User}" Margin="161.6,0,0,187" Grid.Column="1">
                         <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" x:Name = "Name" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,0,0"/>
-                        <TextBox Text="{Binding Balance, UpdateSourceTrigger=PropertyChanged}" x:Name = "Balance" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,0,0"/>
-                        <TextBox Text="{Binding DateUpdateBalance, UpdateSourceTrigger=PropertyChanged}" x:Name = "Date" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,0,0"/>
+                        <TextBox Text="{Binding Balance, UpdateSourceTrigger=PropertyChanged}" x:Name = "Balance" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,0,0" PreviewTextInput="Balance_PreviewTextInput"/>
+                        <DatePicker SelectedDate="{Binding DateUpdateBalance, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignOutlinedDatePicker}"  HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="180" FontSize="24" Margin="0,20,-15.2,0"/>
                     </StackPanel>
 
                 </Grid>
@@ -72,7 +73,7 @@
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Sum}" Header="Сумма" Width="200"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Дата" Width="200"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding ID_IncomeCategory}" Header="Категория" Width="200"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding IncomeCategory}" Header="Категория" Width="200"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -95,8 +96,8 @@
                         <CheckBox Content="Зарплата"/>
                         <CheckBox Content="Пенсия"/>
                         <CheckBox Content="Рента"/>
-                        <CheckBox Content="Бизнес"/>
-                        <CheckBox Content="Другое"/>
+                        <CheckBox Content="Переводы"/>
+                        <CheckBox Content="Стипендия"/>
                     </ListBox>-->
 
                 </Grid>
@@ -124,7 +125,7 @@
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Sum}" Header="Сумма" Width="200"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Дата" Width="200"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding ID_CostsCategory}" Header="Категория" Width="200"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding CostsCategory}" Header="Категория" Width="200"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -172,5 +173,12 @@
             </TabItem>
 
         </TabControl>
+
+        <StackPanel Height="90" Width="109" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button Command ="{Binding Exit}" ToolTip="MaterialDesignFloatingActionDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Height="50" Width="70" Background="Red" VerticalAlignment="Bottom" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="0,30,0,0">
+                <materialDesign:PackIcon Kind="ExitRun" Height="auto" Width="auto"/>
+            </Button>
+        </StackPanel>
+
     </Grid>
 </Window>
