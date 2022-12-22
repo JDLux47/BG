@@ -258,6 +258,7 @@ namespace BG
         {
             db.DeleteCost(selectedCost.ID);
             Costs.Remove(selectedCost);
+            Canvas2();
         }
 
         public void UpdCosts()
@@ -290,6 +291,7 @@ namespace BG
         {
             db.DeleteIncome(selectedIncome.ID);
             Incomes.Remove(selectedIncome);
+            Canvas();
         }
 
         public void UpdIncome()
@@ -318,18 +320,18 @@ namespace BG
             List <IncomeCategoryModel> incomeCategories;
             incomeCategories = db.GetAllIncomeCategory();
 
-            List<IncomeModel> income;
-            income = db.GetAllIncome();
+            //List<IncomeModel> income;
+            //income = db.GetAllIncome();
 
             decimal sum = 0, generalsum = 0, without_category = 0;
 
             Categories = new List<Category>();
 
-            for (int i = 0; i < income.Count; i++)
+            for (int i = 0; i < Incomes.Count; i++)
             {
-                generalsum += income[i].Sum;
-                if (income[i].ID_IncomeCategory == null)
-                    without_category += income[i].Sum;
+                generalsum += Incomes[i].Sum;
+                if (Incomes[i].ID_IncomeCategory == null)
+                    without_category += Incomes[i].Sum;
             }
 
             for (int i = 0; i < incomeCategories.Count; i++)
@@ -338,10 +340,10 @@ namespace BG
 
                 Categories[i].Title = incomeCategories[i].Name;
 
-                for (int j = 0; j < income.Count; j++)
+                for (int j = 0; j < Incomes.Count; j++)
                 {
-                    if (income[j].ID_IncomeCategory == incomeCategories[i].ID)
-                        sum += income[j].Sum;
+                    if (Incomes[j].ID_IncomeCategory == incomeCategories[i].ID)
+                        sum += Incomes[j].Sum;
                 }
 
                 Categories[i].Percentage = (float)( sum / generalsum) * 100;
@@ -445,18 +447,18 @@ namespace BG
             List<CostsCategoryModel> costsCategories;
             costsCategories = db.GetAllCostsCategory();
 
-            List<CostsModel> costs;
-            costs = db.GetAllCosts();
+            //List<CostsModel> costs;
+            //costs = db.GetAllCosts();
 
             decimal sum = 0, generalsum = 0, without_category = 0;
 
             Categories = new List<Category>();
 
-            for (int i = 0; i < costs.Count; i++)
+            for (int i = 0; i < Costs.Count; i++)
             {
-                generalsum += costs[i].Sum;
-                if (costs[i].ID_CostsCategory == null)
-                    without_category += costs[i].Sum;
+                generalsum += Costs[i].Sum;
+                if (Costs[i].ID_CostsCategory == null)
+                    without_category += Costs[i].Sum;
             }
 
             for (int i = 0; i < costsCategories.Count; i++)
@@ -465,10 +467,10 @@ namespace BG
 
                 Categories[i].Title = costsCategories[i].Name;
 
-                for (int j = 0; j < costs.Count; j++)
+                for (int j = 0; j < Costs.Count; j++)
                 {
-                    if (costs[j].ID_CostsCategory == costsCategories[i].ID)
-                        sum += costs[j].Sum;
+                    if (Costs[j].ID_CostsCategory == costsCategories[i].ID)
+                        sum += Costs[j].Sum;
                 }
 
                 Categories[i].Percentage = (float)(sum / generalsum) * 100;

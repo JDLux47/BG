@@ -95,9 +95,10 @@
                     <ListBox Name="list1BoxZone" Margin="9.6,395,9.8,-21.6" Grid.ColumnSpan="1" Grid.Column="1" Height="auto" Width="auto">
                         <CheckBox Content="Зарплата"/>
                         <CheckBox Content="Пенсия"/>
-                        <CheckBox Content="Рента"/>
                         <CheckBox Content="Переводы"/>
                         <CheckBox Content="Стипендия"/>
+                        <CheckBox Content="Подработка"/>
+                        <CheckBox Content="Без категории"/>
                     </ListBox>-->
 
                 </Grid>
@@ -150,6 +151,7 @@
                         <CheckBox Content="Одежда"/>
                         <CheckBox Content="Услуги"/>
                         <CheckBox Content="Другое"/>
+                        <CheckBox Content="Без категории"/>
                     </ListBox>-->
 
                 </Grid>

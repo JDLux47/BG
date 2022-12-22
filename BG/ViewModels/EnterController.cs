@@ -43,8 +43,8 @@ namespace BG.ViewModels
             db = dbCrud;
             this.registration = registration;
             user = new UserModel();
-            user.Login = "JD921Lux";
-            user.Password = 12345678;
+            //user.Login = "JD921Lux";
+            //user.Password = 12345678;
         }
 
         public void UsersLoad()
